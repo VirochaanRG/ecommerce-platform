@@ -9,11 +9,15 @@ import uploadRoutes from './routes/uploadRoutes.js'
 import bodyParser from 'body-parser';
 import path from 'path'
 import morgan from 'morgan';
+import cors from 'cors'
+
 
 dotenv.config();
 connectDB()
 
 const app = express()
+
+app.use(cors())
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
