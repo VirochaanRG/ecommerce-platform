@@ -26,7 +26,7 @@ import {
 export const listProducts = (keyword = '', pageNumber = '') => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
-
+    console.log(axios.defaults.baseURL)
     const { data } = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`)
 
     dispatch({
