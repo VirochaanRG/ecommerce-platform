@@ -6,13 +6,15 @@ import Loader from './Loader'
 import Message from './Message'
 import { listTopProducts } from '../actions/productActions'
 
-const ProductCarousel = () => {
+const ProductCarousel = () =>
+{
   const dispatch = useDispatch()
 
   const productTopRated = useSelector((state) => state.productTopRated)
   const { loading, error, products } = productTopRated
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     dispatch(listTopProducts())
   }, [dispatch])
 
@@ -25,12 +27,12 @@ const ProductCarousel = () => {
       {products.map((product) => (
         <Carousel.Item key={product._id}>
           <Link to={`/product/${product._id}`}>
-            <Image src={product.image} alt={product.name} fluid />
             <Carousel.Caption className='carousel-caption'>
               <h2>
-                {product.name} (${product.price})
+                {product.name}
               </h2>
             </Carousel.Caption>
+            <Image src={product.image} alt={product.name} fluid />
           </Link>
         </Carousel.Item>
       ))}
